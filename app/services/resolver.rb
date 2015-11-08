@@ -80,7 +80,7 @@ class Resolver
 
   def resource_cname_to_hash(resource)
     {
-      type: 'className',
+      type: 'CNAME',
       ttl: resource.ttl,
       name: resource.name.to_s
     }

@@ -20,18 +20,4 @@ database:
 
 test:
   override:
-    - bundle exec rubocop
-    - bundle exec rake coffeelint
-    - bundle exec scss-lint
     - bin/rake spec
-
-deployment:
-  staging:
-    branch: deployment/staging
-    commands:
-      - ./heroku_deploy.sh [STAGING_HEROKU_APP_NAME]
-
-  production:
-    branch: deployment/production
-    commands:
-      - ./heroku_deploy.sh [PRODUCTION_HEROKU_APP_NAME]

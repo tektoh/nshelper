@@ -40,8 +40,8 @@ RSpec.configure do |config|
   # Configure DatabaseCleaner to reset data between tests
   config.before(:suite) do
     SeedFu.seed
-    DatabaseCleaner.strategy = :transaction
-    DatabaseCleaner.clean_with :truncation
+    # DatabaseCleaner.strategy = :transaction
+    # DatabaseCleaner.clean_with :truncation
   end
 
   config.before :all do

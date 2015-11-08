@@ -1,0 +1,17 @@
+default: &default
+  adapter: postgresql
+  encoding: utf8
+  pool: 5
+  timeout: 5000
+  host: localhost
+  port: 5432
+  username: rails
+  password: rails
+
+development:
+  <<: *default
+  database: db_development
+
+test:
+  <<: *default
+  database: db_test

@@ -1,0 +1,37 @@
+machine:
+  timezone:
+    Asia/Tokyo
+
+  ruby:
+    version: 2.2.2
+
+dependencies:
+  cache_directories:
+    - "vendor/bundle"
+  override:
+    - bundle -j4 --path=vendor/bundle
+  pre:
+    - gem install bundler --pre
+
+database:
+  override:
+    - mv config/database.ci.yml config/database.yml
+    - bundle exec rake db:create db:schema:load --trace
+
+test:
+  override:
+    - bundle exec rubocop
+    - bundle exec rake coffeelint
+    - bundle exec scss-lint
+    - bin/rake spec
+
+deployment:
+  staging:
+    branch: deployment/staging
+    commands:
+      - ./heroku_deploy.sh [STAGING_HEROKU_APP_NAME]
+
+  production:
+    branch: deployment/production
+    commands:
+      - ./heroku_deploy.sh [PRODUCTION_HEROKU_APP_NAME]

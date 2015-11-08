@@ -1,0 +1,45 @@
+# This file overrides https://github.com/bbatsov/rubocop/blob/master/config/default.yml
+
+AllCops:
+  Exclude:
+    - "vendor/**/*"
+    - "Vagrantfile"
+    - "Guardfile"
+    - "db/**/*"
+    - "bin/**/*"
+    - "spec/**/*"
+    - "config/initializers/devise.rb"
+    - "lib/tasks/import.rake"
+  DisplayCopNames: true
+
+Style/IfUnlessModifier:
+  Enabled: false
+
+Style/WhileUntilModifier:
+  Enabled: false
+
+Style/AsciiComments:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/LineLength:
+  Enabled: false
+
+Metrics/MethodLength:
+  CountComments: false
+  Max: 30
+
+Metrics/ClassLength:
+  CountComments: false
+  Max: 300
+
+Metrics/AbcSize:
+  Max: 30
+
+Metrics/CyclomaticComplexity:
+  Max: 30

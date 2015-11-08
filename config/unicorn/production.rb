@@ -1,26 +1,6 @@
-# paths
-app_path = '/var/www/20x20pics'
-app_current_path = "#{app_path}/current"
-app_shared_path = "#{app_path}/shared"
-
-working_directory "#{app_current_path}"
-pid "#{app_shared_path}/tmp/pids/unicorn.pid"
-
-# listen
-listen "#{app_shared_path}/tmp/sockets/unicorn.sock"
-
-# logging
-stderr_path "#{app_shared_path}/log/unicorn.stderr.log"
-stdout_path "#{app_shared_path}/log/unicorn.stdout.log"
-
-# workers
-worker_processes 3
+worker_processes Integer(ENV['WEB_CONCURRENCY'] || 3)
 timeout 60
 preload_app true
-
-before_exec do |_server|
-  ENV['BUNDLE_GEMFILE'] = "#{app_current_path}/Gemfile"
-end
 
 before_fork do |_server, _worker|
   Signal.trap 'TERM' do

@@ -35,7 +35,7 @@ class NSHelper extends React.Component {
     return(
       <div>
         <QueryForm onQuerySubmit={this.handleQuerySubmit} disabled={this.state.disabled} />
-        <QueryResult data={this.state.data} />
+        <QueryResults data={this.state.data} />
       </div>
     );
   }

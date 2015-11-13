@@ -37,7 +37,7 @@ class QueryResult extends React.Component {
                   return (
                     <div>
                       <dt>{this.translate(item)}</dt>
-                      <dd>{this.prop.resource[item]}</dd>
+                      <dd>{this.props.resource[item]}</dd>
                     </div>
                   );
                 }
